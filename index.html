@@ -62,20 +62,28 @@ audio {
 
 
 <input type="file" accept="audio/*" id="audioFile">
+<br><br>
 <audio id="player" controls></audio>
+<br><br>
+<a id="downloadLink" download style="display:none;">Аудионы жүктеп алу</a>
 
 <script>
 const input = document.getElementById('audioFile');
 const player = document.getElementById('player');
+const downloadLink = document.getElementById('downloadLink');
 
 input.addEventListener('change', function () {
   const file = this.files[0];
   if (file) {
-    player.src = URL.createObjectURL(file);
+    const url = URL.createObjectURL(file);
+    player.src = url;
     player.play();
+    downloadLink.href = url;
+    downloadLink.style.display = 'inline-block';
   }
 });
 </script>
+
 
 <div class="note">
 Бұл сайт жеке қолдануға арналған. Дайын аудиоларыңызды төмендегі нұсқаулық бойынша қолданасыз.
