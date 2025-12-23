@@ -60,7 +60,21 @@ audio {
 АУДИОҒА АЙНАЛДЫР
 </button>
 
-<audio controls></audio>
+<input type="file" accept="audio/*" id="audioFile">
+<audio id="player" controls></audio>
+
+<script>
+const input = document.getElementById('audioFile');
+const player = document.getElementById('player');
+
+input.addEventListener('change', function () {
+  const file = this.files[0];
+  if (file) {
+    player.src = URL.createObjectURL(file);
+    player.play();
+  }
+});
+</script>
 
 <div class="note">
 Бұл сайт жеке қолдануға арналған. Дайын аудиоларыңызды төмендегі нұсқаулық бойынша қолданасыз.
